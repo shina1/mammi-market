@@ -1,23 +1,23 @@
-import { Link, useLocation } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import { Link, useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import {
   FaInstagram,
   FaTwitterSquare,
   FaTiktok,
   FaFacebookF,
   FaYoutube,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 const Footer = () => {
   const location = useLocation();
 
   const isBigScreen = useMediaQuery({
-    query: "(min-width: 1024px)",
+    query: '(min-width: 1024px)',
   });
 
-  const isCollectionPage = location.pathname.includes("collections");
+  const isCollectionPage = location.pathname.includes('collections');
 
   return (
     <footer
@@ -30,10 +30,8 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.profile}>
           <div className={styles.nav_wrapper}>
-            <div className={styles.nav_title}>Flowy Cart</div>
-            <div className={styles.subTitle}>
-              Unleash your fashion. Find your flow.
-            </div>
+            <div className={styles.nav_title}>Mami-market</div>
+            <div className={styles.subTitle}>Your one stop grocery store!</div>
             <div className={styles.socials_wrapper}>
               <div className={styles.socials}>
                 <a
@@ -58,7 +56,7 @@ const Footer = () => {
               </div>
             </div>
             <div className={styles.subTitle}>
-              All rights reserved.©️ 2024 Flowy Cart
+              All rights reserved.©️ 2024 Mami-market
             </div>
           </div>
         </div>
