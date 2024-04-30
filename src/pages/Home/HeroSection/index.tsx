@@ -1,10 +1,10 @@
-import styles from "./index.module.scss";
-import Button from "../../../components/components/Button";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { heroImages } from "../../../data/images";
+import styles from './index.module.scss';
+import Button from '../../../components/components/Button';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+import { heroImages } from '../../../data/images';
 
 const HeroSection = () => {
   return (
@@ -13,11 +13,11 @@ const HeroSection = () => {
         <div className={styles.content_wrapper}>
           <header className={styles.header}>
             <h1 className={styles.title} style={{ fontWeight: 1000 }}>
-              unleash your Style
+              mami-market grocery store
             </h1>
-            <h1 className={styles.title} style={{ fontWeight: 1000 }}>
-              find your Flow.
-            </h1>
+            <h3 className={styles.title} style={{ fontWeight: 1000 }}>
+              Your one stop grocery store!
+            </h3>
           </header>
           <div className={styles.buttons_wrapper}>
             <Button to="/catalog/All" className={styles.button}>

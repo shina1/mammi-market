@@ -1,10 +1,10 @@
-import { NavLink, Link } from "react-router-dom";
-import { RiSearch2Line } from "react-icons/ri";
-import { RiUserLine } from "react-icons/ri";
-import styles from "./index.module.scss";
-import { navData } from "../../../../../data/navItems";
-import CartIcon from "./CartIcon";
-import { useEffect, useState } from "react";
+import { NavLink, Link } from 'react-router-dom';
+import { RiSearch2Line } from 'react-icons/ri';
+import { RiUserLine } from 'react-icons/ri';
+import styles from './index.module.scss';
+import { navData } from '../../../../../data/navItems';
+import CartIcon from './CartIcon';
+import { useEffect, useState } from 'react';
 
 interface NavBarProps {
   handleShow: () => void;
@@ -36,9 +36,9 @@ const Navbar: React.FC<NavBarProps> = ({ handleShow }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", resizeHeaderOnScroll);
+    window.addEventListener('scroll', resizeHeaderOnScroll);
 
-    return () => window.removeEventListener("scroll", resizeHeaderOnScroll);
+    return () => window.removeEventListener('scroll', resizeHeaderOnScroll);
   }, []);
   const navStyles = hasScrolled
     ? `${styles.nav} ${styles.hasScrolled}`
@@ -48,7 +48,7 @@ const Navbar: React.FC<NavBarProps> = ({ handleShow }) => {
     <nav className={navStyles}>
       <div className={styles.container_bottom}>
         <Link to="/" className={styles.title}>
-          Flowy Cart
+          Mami-Market
         </Link>
         <ul className={styles.links}>
           {navData.map((option) => {
@@ -63,7 +63,7 @@ const Navbar: React.FC<NavBarProps> = ({ handleShow }) => {
         </ul>
         <ul className={styles.icons_menu}>
           <li>
-            <NavLink to={"/"} className={styles.link}>
+            <NavLink to={'/'} className={styles.link}>
               <RiSearch2Line />
             </NavLink>
           </li>

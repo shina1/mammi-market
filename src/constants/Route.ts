@@ -4,19 +4,19 @@ export const ROUTES = [
     url: "products",
   },
   {
-    name: "Men",
-    url: "men's clothing",
+    name: "Fruits",
+    url: "Fruits collections",
   },
   {
-    name: "Women",
-    url: "women's clothing",
+    name: "Vegitables",
+    url: "Vegitables collections",
   },
   {
-    name: "Electronics",
-    url: "electronics",
+    name: "Food",
+    url: "Food Items",
   },
   {
-    name: "Jewelery",
-    url: "jewelery",
+    name: "Protein",
+    url: "protein",
   },
 ];
