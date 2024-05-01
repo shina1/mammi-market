@@ -33,7 +33,10 @@ export const getProducts = createAsyncThunk(
   "products/getAll",
   async (_, thunkAPI) => {
     try {
-      return await productService.getProducts();
+      const allProducts = await productService.getProducts();
+      console.log('fetched all products', allProducts);
+      
+      return allProducts
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

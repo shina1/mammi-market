@@ -1,7 +1,9 @@
 import axiosConfig from "../../app/axiosConfig";
 
 const getProducts = async () => {
+  // const response = await axiosConfig.get("products");
   const response = await axiosConfig.get("products");
+console.log('from the prodcut service', response);
 
   return response.data;
 };
