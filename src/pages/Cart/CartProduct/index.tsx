@@ -1,16 +1,17 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import styles from "./index.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './index.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   incrementItemFromCart,
   reduceItemFromCart,
   removeItemFromCart,
-} from "../../../features/cart/cartSlice";
-import { MdDelete } from "react-icons/md";
-import Button from "../../../components/components/Button";
-import { CartItem } from "../../../types/cart";
-import Spinner from "../../../components/components/Spinner";
+} from '../../../features/cart/cartSlice';
+import { MdDelete } from 'react-icons/md';
+import Button from '../../../components/components/Button';
+import { CartItem } from '../../../types/cart';
+import Spinner from '../../../components/components/Spinner';
+import { formatToNaira } from '../../../utils/currencyFormater';
 
 interface CartProps {
   item: CartItem;
@@ -37,7 +38,9 @@ const CartProduct: FC<CartProps> = ({ item, onClick }) => {
           <div className={styles.cartCardLeft}>
             <div className={styles.title}>{item.product.title}</div>
             <div className={styles.size}>Size: 36</div>
-            <div className={styles.price}>$ {item.product.price}</div>
+            <div className={styles.price}>
+              {formatToNaira(item.product.price)}
+            </div>
           </div>
         </div>
       </Link>

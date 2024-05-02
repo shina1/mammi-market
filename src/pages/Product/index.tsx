@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { getSingleProduct } from "../../features/product/productSlice";
-import styles from "./index.module.scss";
-import { useParams } from "react-router";
-import { sizeData } from "../../data/navItems";
-import { Link } from "react-router-dom";
-import { addToCart } from "../../features/cart/cartSlice";
-import { CartItem } from "../../types/cart";
-import GoToTop from "../../components/components/GoToTop";
-import Spinner from "../../components/components/Spinner";
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { getSingleProduct } from '../../features/product/productSlice';
+import styles from './index.module.scss';
+import { useParams } from 'react-router';
+// import { sizeData } from '../../data/navItems';
+import { Link } from 'react-router-dom';
+import { addToCart } from '../../features/cart/cartSlice';
+import { CartItem } from '../../types/cart';
+import GoToTop from '../../components/components/GoToTop';
+import Spinner from '../../components/components/Spinner';
+import { formatToNaira } from '../../utils/currencyFormater';
 
 const Product = () => {
   const { product, isLoading } = useAppSelector((state) => state.product);
@@ -19,7 +20,7 @@ const Product = () => {
 
   const addToCartHandler = () => {
     setIsLoadingProduct(true);
-    console.log("I am adding to cart");
+    console.log('I am adding to cart');
     const cartProduct: CartItem = {
       quantity: 1,
       product: {
@@ -41,9 +42,9 @@ const Product = () => {
   }, []);
 
   const route = [
-    { name: "Home", route: "/" },
-    { name: "Products", route: "/catalog/All" },
-    { name: "Product Details", route: `/products/${id}` },
+    { name: 'Home', route: '/' },
+    { name: 'Products', route: '/catalog/All' },
+    { name: 'Product Details', route: `/products/${id}` },
   ];
 
   if (isLoading) return <Spinner />;
@@ -70,7 +71,7 @@ const Product = () => {
               <div className={styles.title}>{product.title}</div>
               <div className={styles.subHeading}>{product.description}</div>
             </div>
-            <div className={styles.sizeContainer}>
+            {/* <div className={styles.sizeContainer}>
               <div className={styles.title}>Size:</div>
               <div className={styles.categories}>
                 <div className={styles.buttonContainer}>
@@ -86,10 +87,15 @@ const Product = () => {
                   })}
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className={styles.priceContainer}>
               <div className={styles.title}>Price:</div>
-              <div className={styles.price}>${product.price}</div>
+              {/*  */}
+              <div className={styles.price}>
+                {' '}
+                {formatToNaira(product.price)}
+              </div>
+              {/* <div className={styles.price}> ₦ {product.price}</div> */}
             </div>
             <div className={styles.addToCartContainer}>
               <div
@@ -97,9 +103,9 @@ const Product = () => {
                 onClick={() => addToCartHandler()}
               >
                 {isLoadingProduct ? (
-                  <Spinner className={"addToCartSm"} />
+                  <Spinner className={'addToCartSm'} />
                 ) : (
-                  "Add to Cart"
+                  'Add to Cart'
                 )}
               </div>
               <Link to={`/catalog/All`} className={styles.continueShopping}>
