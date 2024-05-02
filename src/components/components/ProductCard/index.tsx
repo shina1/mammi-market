@@ -1,14 +1,15 @@
-import { useState, FC } from "react";
-import styles from "./index.module.scss";
-import { Link } from "react-router-dom";
-import { Product } from "../../../types/product";
-import { motion } from "framer-motion";
-import { useAppDispatch } from "../../../app/hooks";
-import { CartItem } from "../../../types/cart";
-import { addToCart } from "../../../features/cart/cartSlice";
-import { CgShoppingBag } from "react-icons/cg";
-import Button from "../Button";
-import Spinner from "../Spinner";
+import { useState, FC } from 'react';
+import styles from './index.module.scss';
+import { Link } from 'react-router-dom';
+import { Product } from '../../../types/product';
+import { motion } from 'framer-motion';
+import { useAppDispatch } from '../../../app/hooks';
+import { CartItem } from '../../../types/cart';
+import { addToCart } from '../../../features/cart/cartSlice';
+import { CgShoppingBag } from 'react-icons/cg';
+import Button from '../Button';
+import Spinner from '../Spinner';
+import { formatToNaira } from '../../../utils/currencyFormater';
 
 interface ProductCardProps extends Product {
   key: number;
@@ -57,12 +58,12 @@ const ProductCard: FC<ProductCardProps> = ({
       id={title}
       key={key}
       tabIndex={id}
-      whileHover={{ cursor: "pointer" }}
+      whileHover={{ cursor: 'pointer' }}
       // onMouseEnter={() => showActionIcons(true)}
       // onMouseLeave={() => showActionIcons(false)}
-      whileTap={{ cursor: "grabbing" }}
+      whileTap={{ cursor: 'grabbing' }}
       transition={{
-        ease: "easeInOut",
+        ease: 'easeInOut',
         duration: 0.4,
       }}
     >
@@ -82,17 +83,17 @@ const ProductCard: FC<ProductCardProps> = ({
             <div className={styles.productTitle}>
               <div>{title}</div>
             </div>
-            <div className={styles.productPrice}>{price}$</div>
+            <div className={styles.productPrice}>{formatToNaira(price)}</div>
           </div>
         </Link>
         <motion.div
           key={key}
           whileHover={{ zoom: 1.2 }}
-          style={{ height: "100%" }}
+          style={{ height: '100%' }}
           onClick={() => addToCartHandler()}
         >
           <Button className={styles.iconCcontainer}>
-            {isLoadingProduct && <Spinner className={"addToCart"} />}
+            {isLoadingProduct && <Spinner className={'addToCart'} />}
             <CgShoppingBag
               className={`${styles.icon} ${
                 isLoadingProduct && styles.loadingIcon

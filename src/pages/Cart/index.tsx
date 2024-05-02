@@ -1,22 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import styles from "./index.module.scss";
-import Button from "../../components/components/Button";
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import styles from './index.module.scss';
+import Button from '../../components/components/Button';
 import {
   cartReset,
   incrementItemFromCart,
   reduceItemFromCart,
   removeItemFromCart,
-} from "../../features/cart/cartSlice";
-import { MdArrowBack, MdCheck, MdDelete } from "react-icons/md";
-import { BiPurchaseTag } from "react-icons/bi";
-import { TbTruckReturn } from "react-icons/tb";
-import Spinner from "../../components/components/Spinner";
+} from '../../features/cart/cartSlice';
+import { MdArrowBack, MdCheck, MdDelete } from 'react-icons/md';
+import { BiPurchaseTag } from 'react-icons/bi';
+import { TbTruckReturn } from 'react-icons/tb';
+import Spinner from '../../components/components/Spinner';
+import { formatToNaira } from '../../utils/currencyFormater';
 
 const Cart = () => {
-  const { cartItems, isLoading } = useAppSelector(
-    (state) => state.cart
-  );
+  const { cartItems, isLoading } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -63,9 +62,10 @@ const Cart = () => {
                           <div className={styles.title}>
                             {item.product.title}
                           </div>
-                          <div className={styles.size}>Size: 36</div>
+                          {/* <div className={styles.size}>Size: 36</div> */}
                           <div className={styles.price}>
-                            $ {item.product.price}
+                            {/* $ {item.product.price} */}
+                            {formatToNaira(item.product.price)}
                           </div>
                           <div className={styles.return}>
                             <div className={styles.iconContainer}>
@@ -80,7 +80,7 @@ const Cart = () => {
                               <MdCheck className={styles.icon} />
                             </div>
                             <div className={styles.title}>
-                              Delivery by 2 days
+                              To be delivered in max of 2 days
                             </div>
                           </div>
                         </div>
