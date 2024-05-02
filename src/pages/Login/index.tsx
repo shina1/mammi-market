@@ -1,10 +1,18 @@
-import styles from "./index.module.scss";
-import { useNavigate } from "react-router";
-import { FormEvent, useEffect } from "react";
-import { getUser, login, logout } from "../../features/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import Spinner from "../../components/components/Spinner";
-
+import styles from './index.module.scss';
+import { useNavigate } from 'react-router';
+import { FormEvent, useEffect } from 'react';
+import { getUser, login, logout } from '../../features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import Spinner from '../../components/components/Spinner';
+// interface authResponse {
+//   error?: {
+//     message: string;
+//   };
+//   payload?: {
+//     data: string;
+//     status: number;
+//   };
+// }
 const LoginPage = () => {
   const { user, token, isLoading } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -12,7 +20,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user === null && token) {
-      const userId = localStorage.getItem("user");
+      const userId = localStorage.getItem('user');
       dispatch(getUser(Number(userId)));
     }
   }, [token, user, dispatch]);
@@ -21,19 +29,25 @@ const LoginPage = () => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
-    const username = data.get("username") as string;
-    const password = data.get("password") as string;
+    const username = data.get('username') as string;
+    const password = data.get('password') as string;
 
-    await dispatch(login({ username, password }));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const resp: any = await dispatch(login({ username, password }));
+    console.log('loginAttempt', resp);
+    if (resp?.error && resp?.payload?.response?.status === 401) {
+      alert(resp?.payload?.response?.data);
+    }
+
     if (user && token) {
-      navigate("/");
+      navigate('/');
       console.log(user);
     }
   };
 
   const logoutHandler = async () => {
     await dispatch(logout());
-    navigate("/");
+    navigate('/');
   };
 
   if (isLoading) return <Spinner />;
